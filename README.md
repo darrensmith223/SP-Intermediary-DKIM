@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/darrensmith223/SP-Intermediary-DKIM.svg?branch=main)](https://travis-ci.com/darrensmith223/SP-Intermediary-DKIM)
+
 # SP-Intermediary-DKIM
 
 ## Overview
