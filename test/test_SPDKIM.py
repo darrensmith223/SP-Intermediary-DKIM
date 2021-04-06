@@ -1,5 +1,5 @@
-import SPDKIM
 import responses
+import spdkim
 
 
 @responses.activate
@@ -14,7 +14,8 @@ def test_addIntermediaryDomain():
 
     apiKey = "fake-key"
     intermediaryDomain = "intermediary.domain"
-    SPDKIM.addIntermediaryDomain(apiKey, intermediaryDomain)  # Test
+    response = spdkim.addIntermediaryDomain(apiKey, intermediaryDomain)  # Test
+    assert response.status_code == 200
 
 
 @responses.activate
@@ -30,20 +31,22 @@ def test_addCustomerDomain():
     apiKey = "fake-key"
     sendingDomain = "customer.domain"
 
-    SPDKIM.addSendingDomain(apiKey, sendingDomain)  # Test
+    response = spdkim.addSendingDomain(apiKey, sendingDomain)  # Test
+    assert response.status_code == 200
 
 
 @responses.activate
 def test_verifyDomain():
+    apiKey = "fake-key"
+    sendingDomain = "customer.domain"
+
     responses.add(
         responses.POST,
-        'https://api.sparkpost.com/api/v1/sending-domains',
+        "https://api.sparkpost.com/api/v1/sending-domains/" + sendingDomain + "/verify",
         status=200,
         content_type='application/json',
         body='{"results": "yay"}'
     )
 
-    apiKey = "fake-key"
-    sendingDomain = "customer.domain"
-
-    SPDKIM.verifyDomain(apiKey, sendingDomain)  # Test
+    response = spdkim.verifyDomain(apiKey, sendingDomain)  # Test
+    assert response.status_code == 200

@@ -19,7 +19,7 @@ Ex: "Add CNAME `xyz._domainkey.<your.domain>` that points to `xyz._domainkey.<pl
 
 # Using SP-Intermediary-DKIM
 
-The primary script in SP-Intermediary-DKIM is `SPDKIM.py`, with three primary functions:
+The primary script in SP-Intermediary-DKIM is `spdkim.py`, with three primary functions:
 * `addIntermediaryDomain()` - Generates a 1024 bit private and public key pair, and then adds the intermediary domain to your SparkPost account using the generated key pair.
 * `addSendingDomain()` - Adds your customer sending domain to your SparkPost account using the same private and public key pair generated for your intermediary domain.
 * `verifyDomain()` - DKIM verfies a domain in your SparkPost account.
@@ -50,13 +50,15 @@ addIntermediaryDomain(apiKey, domain, outputPath=None, selector=None)
 An example of adding an intermediary domain to your SparkPost account can be found below:
 
 ```Python
-import SPDKIM
+
+
+import spdkim
 
 # Initialize Variables
 apiKey = "SPARKPOST_API_KEY"
 intermediaryDomain = "intermediary.domain"
 
-SPDKIM.addIntermediaryDomain(apiKey, intermediaryDomain)  # Add Intermediary Domain to SparkPost Account
+spdkim.addIntermediaryDomain(apiKey, intermediaryDomain)  # Add Intermediary Domain to SparkPost Account
 ```
 
 
@@ -73,13 +75,15 @@ addSendingDomain(apiKey, domain, outputPath=None, selector=None)
 An example of adding your customer's domain can be found below:
 
 ```Python
-import SPDKIM
+
+
+import spdkim
 
 # Initialize
 apiKey = "SPARKPOST_API_KEY"
 sendingDomain = "customer.domain"
 
-SPDKIM.addSendingDomain(apiKey, sendingDomain)  # Add Customer Sending Domain to SparkPost Account
+spdkim.addSendingDomain(apiKey, sendingDomain)  # Add Customer Sending Domain to SparkPost Account
 ```
 
 Instruct your customers to add a predefined CNAME record to their DNS that will point to your intermediary domain.
@@ -99,11 +103,13 @@ verifyDomain(apiKey, domain)
 An example of verifying your customer's sending domain can be found below:
 
 ```Python
-import SPDKIM
+
+
+import spdkim
 
 # Initialize
 apiKey = "SPARKPOST_API_KEY"
 sendingDomain = "customer.domain"
 
-SPDKIM.verifyDomain(apiKey, sendingDomain)  # Verify Customer Domain on SparkPost Account
+spdkim.verifyDomain(apiKey, sendingDomain)  # Verify Customer Domain on SparkPost Account
 ```
