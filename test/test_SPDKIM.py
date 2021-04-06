@@ -15,7 +15,7 @@ def test_addIntermediaryDomain():
     apiKey = "fake-key"
     intermediaryDomain = "intermediary.domain"
     response = spdkim.addIntermediaryDomain(apiKey, intermediaryDomain)  # Test
-    assert response == 'yay'
+    assert response.status_code == 200
 
 
 @responses.activate
@@ -32,7 +32,7 @@ def test_addCustomerDomain():
     sendingDomain = "customer.domain"
 
     response = spdkim.addSendingDomain(apiKey, sendingDomain)  # Test
-    assert response == 'yay'
+    assert response.status_code == 200
 
 
 @responses.activate
@@ -49,4 +49,4 @@ def test_verifyDomain():
     )
 
     response = spdkim.verifyDomain(apiKey, sendingDomain)  # Test
-    assert response == 'yay'
+    assert response.status_code == 200
