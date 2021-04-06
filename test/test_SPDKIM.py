@@ -1,5 +1,4 @@
 import responses
-from spdkim import spdkim
 
 
 @responses.activate
