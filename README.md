@@ -50,7 +50,8 @@ addIntermediaryDomain(apiKey, domain, outputPath=None, selector=None)
 An example of adding an intermediary domain to your SparkPost account can be found below:
 
 ```Python
-import SPDKIM
+
+from spdkim import SPDKIM
 
 # Initialize Variables
 apiKey = "SPARKPOST_API_KEY"
@@ -73,7 +74,8 @@ addSendingDomain(apiKey, domain, outputPath=None, selector=None)
 An example of adding your customer's domain can be found below:
 
 ```Python
-import SPDKIM
+
+from spdkim import SPDKIM
 
 # Initialize
 apiKey = "SPARKPOST_API_KEY"
@@ -99,7 +101,8 @@ verifyDomain(apiKey, domain)
 An example of verifying your customer's sending domain can be found below:
 
 ```Python
-import SPDKIM
+
+from spdkim import SPDKIM
 
 # Initialize
 apiKey = "SPARKPOST_API_KEY"
