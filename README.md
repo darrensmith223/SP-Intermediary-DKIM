@@ -51,13 +51,13 @@ An example of adding an intermediary domain to your SparkPost account can be fou
 
 ```Python
 
-from spdkim import SPDKIM
+from spdkim import spdkim
 
 # Initialize Variables
 apiKey = "SPARKPOST_API_KEY"
 intermediaryDomain = "intermediary.domain"
 
-SPDKIM.addIntermediaryDomain(apiKey, intermediaryDomain)  # Add Intermediary Domain to SparkPost Account
+spdkim.addIntermediaryDomain(apiKey, intermediaryDomain)  # Add Intermediary Domain to SparkPost Account
 ```
 
 
@@ -75,13 +75,13 @@ An example of adding your customer's domain can be found below:
 
 ```Python
 
-from spdkim import SPDKIM
+from spdkim import spdkim
 
 # Initialize
 apiKey = "SPARKPOST_API_KEY"
 sendingDomain = "customer.domain"
 
-SPDKIM.addSendingDomain(apiKey, sendingDomain)  # Add Customer Sending Domain to SparkPost Account
+spdkim.addSendingDomain(apiKey, sendingDomain)  # Add Customer Sending Domain to SparkPost Account
 ```
 
 Instruct your customers to add a predefined CNAME record to their DNS that will point to your intermediary domain.
@@ -102,11 +102,11 @@ An example of verifying your customer's sending domain can be found below:
 
 ```Python
 
-from spdkim import SPDKIM
+from spdkim import spdkim
 
 # Initialize
 apiKey = "SPARKPOST_API_KEY"
 sendingDomain = "customer.domain"
 
-SPDKIM.verifyDomain(apiKey, sendingDomain)  # Verify Customer Domain on SparkPost Account
+spdkim.verifyDomain(apiKey, sendingDomain)  # Verify Customer Domain on SparkPost Account
 ```
