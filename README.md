@@ -19,7 +19,7 @@ Ex: "Add CNAME `xyz._domainkey.<your.domain>` that points to `xyz._domainkey.<pl
 
 # Using SP-Intermediary-DKIM
 
-The primary script in SP-Intermediary-DKIM is `SPDKIM.py`, with three primary functions:
+The primary script in SP-Intermediary-DKIM is `spdkim.py`, with three primary functions:
 * `addIntermediaryDomain()` - Generates a 1024 bit private and public key pair, and then adds the intermediary domain to your SparkPost account using the generated key pair.
 * `addSendingDomain()` - Adds your customer sending domain to your SparkPost account using the same private and public key pair generated for your intermediary domain.
 * `verifyDomain()` - DKIM verfies a domain in your SparkPost account.
