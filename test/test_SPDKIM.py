@@ -1,4 +1,5 @@
 import responses
+import spdkim
 
 
 @responses.activate
