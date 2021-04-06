@@ -37,16 +37,16 @@ def test_addCustomerDomain():
 
 @responses.activate
 def test_verifyDomain():
+    apiKey = "fake-key"
+    sendingDomain = "customer.domain"
+
     responses.add(
         responses.POST,
-        'https://api.sparkpost.com/api/v1/sending-domains',
+        "https://api.sparkpost.com/api/v1/sending-domains/" + sendingDomain + "/verify",
         status=200,
         content_type='application/json',
         body='{"results": "yay"}'
     )
-
-    apiKey = "fake-key"
-    sendingDomain = "customer.domain"
 
     response = spdkim.verifyDomain(apiKey, sendingDomain)  # Test
     assert response == 'yay'
