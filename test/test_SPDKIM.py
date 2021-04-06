@@ -14,7 +14,7 @@ def test_addIntermediaryDomain():
 
     apiKey = "fake-key"
     intermediaryDomain = "intermediary.domain"
-    SPDKIM.addIntermediaryDomain(apiKey, intermediaryDomain)
+    SPDKIM.addIntermediaryDomain(apiKey, intermediaryDomain)  # Test
 
 
 @responses.activate
@@ -30,7 +30,7 @@ def test_addCustomerDomain():
     apiKey = "fake-key"
     sendingDomain = "customer.domain"
 
-    SPDKIM.addSendingDomain(apiKey, sendingDomain)
+    SPDKIM.addSendingDomain(apiKey, sendingDomain)  # Test
 
 
 @responses.activate
@@ -46,4 +46,4 @@ def test_verifyDomain():
     apiKey = "fake-key"
     sendingDomain = "customer.domain"
 
-    SPDKIM.verifyDomain(apiKey, sendingDomain)
+    SPDKIM.verifyDomain(apiKey, sendingDomain)  # Test
