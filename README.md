@@ -113,3 +113,6 @@ sendingDomain = "customer.domain"
 
 spdkim.verifyDomain(apiKey, sendingDomain)  # Verify Customer Domain on SparkPost Account
 ```
+
+
+# Using with Command Line
