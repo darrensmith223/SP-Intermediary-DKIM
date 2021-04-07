@@ -179,25 +179,26 @@ def clVerifyDomain(args):
     print(response.reason)
 
 
-# Import Arguments - Command Line
-parser = argparse.ArgumentParser(description="Add and verify intermediary domains and customer domains to your "
-                                             "SparkPost account.")
-parser.add_argument("apiKey", type=str, help="SparkPost API Key")
-subparsers = parser.add_subparsers(help="Action to be taken.  Type [action] -h for more help")
-parser_add = subparsers.add_parser("add", help="Add New Domain")
-parser_add.add_argument("domain", type=str, help="domain")
-parser_add.add_argument("-i", "--intermediary", help="Indicate Domain is Intermediary Domain", action="store_true")
-parser_add.add_argument("-o", metavar="Output Location", type=str, help="(optional) Local path where key pair is "
-                                                                        "stored.  Defaults to current working "
-                                                                        "directory")
-parser_add.add_argument("-s", metavar="Selector", type=str,
-                        help="(optional) Selector to use for DKIM record.  Defaults to 'scphMMYY' where MMYY "
-                             "represents the current month and year")
-parser_add.set_defaults(func=clAddDomain)
+if __name__ == "__main__":
+    # Import Arguments - Command Line
+    parser = argparse.ArgumentParser(description="Add and verify intermediary domains and customer domains to your "
+                                                 "SparkPost account.")
+    parser.add_argument("apiKey", type=str, help="SparkPost API Key")
+    subparsers = parser.add_subparsers(help="Action to be taken.  Type [action] -h for more help")
+    parser_add = subparsers.add_parser("add", help="Add New Domain")
+    parser_add.add_argument("domain", type=str, help="domain")
+    parser_add.add_argument("-i", "--intermediary", help="Indicate Domain is Intermediary Domain", action="store_true")
+    parser_add.add_argument("-o", metavar="Output Location", type=str, help="(optional) Local path where key pair is "
+                                                                            "stored.  Defaults to current working "
+                                                                            "directory")
+    parser_add.add_argument("-s", metavar="Selector", type=str,
+                            help="(optional) Selector to use for DKIM record.  Defaults to 'scphMMYY' where MMYY "
+                                 "represents the current month and year")
+    parser_add.set_defaults(func=clAddDomain)
 
-parser_verify = subparsers.add_parser("verify", help="Verify Domain")
-parser_verify.add_argument("domain", type=str, help="Domain to Verify")
-parser_verify.set_defaults(func=clVerifyDomain)
+    parser_verify = subparsers.add_parser("verify", help="Verify Domain")
+    parser_verify.add_argument("domain", type=str, help="Domain to Verify")
+    parser_verify.set_defaults(func=clVerifyDomain)
 
-args = parser.parse_args()
-args.func(args)
+    args = parser.parse_args()
+    args.func(args)
