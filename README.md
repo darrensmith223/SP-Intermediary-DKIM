@@ -19,6 +19,23 @@ Using an intermediary domain for DKIM enables a customer to successfully send fr
 Ex: "Add CNAME `xyz._domainkey.<your.domain>` that points to `xyz._domainkey.<platform.domain>`."
 
 
+## Installation
+
+Firstly ensure you have `python3`, `pip` and `git`.
+
+Next, get the project and install the project dependencies.
+
+```
+git clone https://github.com/darrensmith223/SP-Intermediary-DKIM.git
+cd SP-Intermediary-DKIM
+pip install requests
+pip install cryptography
+```
+Note: In the above commands, you may need to run pip3 instead of pip.
+
+
+./sparkyTemplate.py -h for usage info.
+
 # Using SP-Intermediary-DKIM
 
 The primary script in SP-Intermediary-DKIM is `spdkim.py`, with three primary functions:
