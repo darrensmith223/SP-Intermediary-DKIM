@@ -34,8 +34,6 @@ pip install cryptography
 Note: In the above commands, you may need to run pip3 instead of pip.
 
 
-./sparkyTemplate.py -h for usage info.
-
 # Using SP-Intermediary-DKIM
 
 The primary script in SP-Intermediary-DKIM is `spdkim.py`, with three primary functions:
