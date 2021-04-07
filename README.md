@@ -115,3 +115,114 @@ sendingDomain = "customer.domain"
 
 spdkim.verifyDomain(apiKey, sendingDomain)  # Verify Customer Domain on SparkPost Account
 ```
+
+
+# Using with Command Line
+
+Domains can be added and verified using the command line.  
+
+```commandline
+usage: spdkim.py [-h] apiKey {add,verify} ...
+```
+
+To get `help` documentation, enter:
+
+```commandline
+spdkim.py -h
+```
+
+Output:
+
+```commandline
+Add and verify intermediary domains and customer domains to your SparkPost account.
+
+positional arguments:
+  apiKey        SparkPost API Key
+  {add,verify}  Action to be taken. Type [action] -h for more help
+    add         Add New Domain
+    verify      Verify Domain
+```
+
+There are two different action keywords: `add` and `verify`, which are used to indicate what action to perform.  Depending on the action that is entered, additional arguments are available.
+
+## Add
+
+To add a domain to your SparkPost account, use the `add` action, as shown below:
+
+```commandline
+usage: spdkim.py apiKey add domain [-h] [-i] [-o Output Location] [-s Selector]
+```
+
+Arguments:
+
+```commandline
+positional arguments:
+  domain              domain
+
+optional arguments:
+  -h, --help          show this help message and exit
+  -i, --intermediary  Indicate Domain is Intermediary Domain
+  -o Output Location  (optional) Local path where key pair is stored. Defaults to current working directory
+  -s Selector         (optional) Selector to use for DKIM record. Defaults to 'scphMMYY' where MMYY represents the current month and year
+```
+
+### Add Intermediary Domain
+
+To add an intermediary domain, use the `add` action, and include the `-i` parameter to indicate that the domain should be added as an intermediary domain.
+
+In the following example, `example.domain.com` is being added as an intermediary domain:
+
+```commandline
+./spdkim.py <YOUR_API_KEY> add example.domain.com -i
+```
+
+This will generate a key pair and add `example.domain.com` as an intermediary domain.  Remember to replace `<YOUR_API_KEY>` with your SparkPost API key.
+
+
+### Add Customer Sending Domain
+
+The process to add a sending domain is similar to an intermediary domain, with the exception that you do not use the `-i` parameter.
+
+For example, in the following command, `customer.domain.com` is being added as an intermediary domain:
+
+```commandline
+./spdkim.py <YOUR_API_KEY> add customer.domain.com
+```
+
+This will add `customer.domain.com` as a customer domain, using the same key pair that was generated and used with the intermediary domain.  Remember to replace `<YOUR_API_KEY>` with your SparkPost API key.
+
+
+## Verify
+
+To verify either an intermediary domain or a customer sending domain, you will use the `verify` action, as shown below:
+
+```commandline
+usage: spdkim.py apiKey verify [-h] domain
+```
+
+Arguments:
+
+```commandline
+positional arguments:
+  domain      Domain to Verify
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+In the following example, the intermediary domain `example.domain.com` is being verified in your SparkPost account:
+
+```commandline
+./spdkim.py <YOUR_API_KEY> verify example.domain.com
+```
+
+This will verify `example.domain.com` on your SparkPost account.
+
+Similarly, in the following example, the domain `customer.domain.com` is being verified for sending:
+
+```commandline
+./spdkim.py <YOUR_API_KEY> verify customer.domain.com
+```
+
+This will verify `customer.domain.com` for use as a sending domain on your SparkPost account.  Remember to replace `<YOUR_API_KEY>` with your SparkPost API key.
+
