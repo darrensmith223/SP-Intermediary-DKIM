@@ -198,7 +198,7 @@ This will generate a key pair and add `example.domain.com` as an intermediary do
 
 The process to add a sending domain is similar to an intermediary domain, with the exception that you do not use the `-i` parameter.
 
-For example, in the following command, `customer.domain.com` is being added as an intermediary domain:
+For example, in the following command, `customer.domain.com` is being added as a sending domain:
 
 ```commandline
 ./spdkim.py <YOUR_API_KEY> add customer.domain.com
